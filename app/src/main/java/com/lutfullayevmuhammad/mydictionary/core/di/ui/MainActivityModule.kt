@@ -1,0 +1,1 @@
+package com.lutfullayevmuhammad.mydictionary.core.di.uiimport com.lutfullayevmuhammad.mydictionary.MainActivityimport dagger.Moduleimport dagger.android.ContributesAndroidInjector@Moduleabstract class MainActivityModule {    @ContributesAndroidInjector(        modules = [HomeModule::class]    )    abstract fun provideMainActivity(): MainActivity}

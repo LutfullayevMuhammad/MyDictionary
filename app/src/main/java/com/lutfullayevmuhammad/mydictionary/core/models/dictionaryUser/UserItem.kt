@@ -1,0 +1,1 @@
+package com.lutfullayevmuhammad.mydictionary.core.models.dictionaryUserimport androidx.room.ColumnInfoimport androidx.room.Entityimport androidx.room.PrimaryKey@Entity(tableName = "user_table")class UserItem(    @ColumnInfo(name = "dictionary") var dictionary: String) {    @ColumnInfo(name = "id")    @PrimaryKey(autoGenerate = true)    var id:Int? = null}
