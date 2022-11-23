@@ -52,6 +52,12 @@ class MainActivity : DaggerAppCompatActivity() {
             adapterUser.setData(it)
         }
 
+        viewModel.getAllData()
+
+        viewModel.alldata.observe(this){
+            adapterUser.setData(it!!)
+        }
+
         binding.addBtn.setOnClickListener {
             var userDialog = UserDialog(this)
             userDialog.show()
