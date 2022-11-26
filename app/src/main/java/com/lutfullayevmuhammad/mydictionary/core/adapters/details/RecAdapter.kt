@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lutfullayevmuhammad.mydictionary.core.models.dictionaryRec.RecData
+import com.lutfullayevmuhammad.mydictionary.databinding.RecItemBinding
 import com.lutfullayevmuhammad.mydictionary.databinding.UserItemBinding
 
 class RecAdapter : RecyclerView.Adapter<RecAdapterHolder>() {
@@ -18,7 +19,7 @@ class RecAdapter : RecyclerView.Adapter<RecAdapterHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecAdapterHolder =
         RecAdapterHolder(
-            UserItemBinding.inflate(
+            RecItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
