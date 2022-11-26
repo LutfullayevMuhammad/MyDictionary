@@ -5,44 +5,52 @@
     android:layout_height="match_parent">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:background="#4FC3F7"
-        android:orientation="vertical"
-        android:padding="16dp">
+        app:cardCornerRadius="15dp">
 
-        <EditText
-            android:id="@+id/en_dialog"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="En"
-            app:layout_constraintBottom_toTopOf="@id/uz_dialog"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="#0277BD"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <EditText
-            android:id="@+id/uz_dialog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Uz"
-            app:layout_constraintBottom_toTopOf="@id/save_btn"
-            app:layout_constraintTop_toBottomOf="@id/en_dialog" />
+            <EditText
+                android:id="@+id/en_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_back"
+                android:hint="En"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@id/uz_dialog"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/save_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#0097A7"
-            android:text="Add"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/uz_dialog" />
+            <EditText
+                android:id="@+id/uz_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_back"
+                android:hint="Uz"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@id/save_btn"
+                app:layout_constraintTop_toBottomOf="@id/en_dialog" />
 
+            <Button
+                android:id="@+id/save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_back"
+                android:text="Add"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uz_dialog" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

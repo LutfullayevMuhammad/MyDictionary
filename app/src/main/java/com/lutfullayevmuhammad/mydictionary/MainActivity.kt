@@ -1,8 +1,10 @@
 package com.lutfullayevmuhammad.mydictionary
 
+import android.app.AlarmManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
@@ -59,7 +61,6 @@ class MainActivity : DaggerAppCompatActivity() {
                 editor.commit()
             }
         }
-
     }
 
 }

@@ -1,20 +1,17 @@
 package com.lutfullayevmuhammad.mydictionary
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lutfullayevmuhammad.mydictionary.core.adapters.details.RecAdapter
-import com.lutfullayevmuhammad.mydictionary.core.adapters.home.UserAdapter
-import com.lutfullayevmuhammad.mydictionary.core.helper.ViewModelProviderFactory
 import com.lutfullayevmuhammad.mydictionary.core.models.dictionaryRec.RecData
-import com.lutfullayevmuhammad.mydictionary.core.models.dictionaryUser.UserItem
-import com.lutfullayevmuhammad.mydictionary.databinding.ActivityMainBinding
 import com.lutfullayevmuhammad.mydictionary.databinding.ActivityRecBinding
+import com.lutfullayevmuhammad.mydictionary.service.MyBroadcastReciver
 import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
 
 class RecActivity : DaggerAppCompatActivity() {
 
@@ -34,6 +31,19 @@ class RecActivity : DaggerAppCompatActivity() {
 
         adapterRec.data = recData()
 
+        binding.startNotification.setOnClickListener {
+            canExactAlarmsBeScheduled()
+            val myIntent = Intent(this, MyBroadcastReciver::class.java)
+            myIntent.putExtra("translation", recData().random().dictionary)
+            val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+            val pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0)
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
+                7200000.toLong(),
+                pendingIntent
+            )
+            Toast.makeText(this,"Start Notification",Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun recData(): ArrayList<RecData> {
@@ -99,6 +109,16 @@ class RecActivity : DaggerAppCompatActivity() {
             RecData("really - haqiqatan ham"),
             RecData("rough - qo'pol")
         )
+    }
+
+
+    private fun canExactAlarmsBeScheduled(): Boolean {
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            alarmManager.canScheduleExactAlarms()
+        } else {
+            true
+        }
     }
 
 }
