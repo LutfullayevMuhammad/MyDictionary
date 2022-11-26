@@ -17,6 +17,8 @@ class UserAdapter : RecyclerView.Adapter<UserAdapterHolder>() {
         notifyDataSetChanged()
     }
 
+    var onItemClick: ((UserItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapterHolder =
         UserAdapterHolder(
             UserItemBinding.inflate(
@@ -28,13 +30,17 @@ class UserAdapter : RecyclerView.Adapter<UserAdapterHolder>() {
 
     override fun onBindViewHolder(holder: UserAdapterHolder, position: Int) {
         holder.bindData(data = data[position])
+
+        holder.binding.deleteBtn.setOnClickListener {
+            onItemClick?.invoke(data[position])
+        }
     }
 
     override fun getItemCount(): Int = data.size
 
-//    fun itemRemoved(position: Int) {
-//        this.data.removeAt(position)
-//        notifyItemRemoved(position)
-//    }
+    fun itemRemoved(position: Int) {
+        this.data.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
 }

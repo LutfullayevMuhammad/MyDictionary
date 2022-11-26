@@ -31,7 +31,16 @@
                 android:value="" />
         </activity>
 
-        <receiver android:name=".widget.CollectionWidget"
+        <activity
+            android:name=".RecActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".UserActivity"
+            android:exported="true" />
+
+        <receiver
+            android:name=".widget.CollectionWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -41,23 +50,18 @@
                 android:resource="@xml/collection_widget_info" />
         </receiver>
 
-        <service android:name=".widget.WidgetService"
+        <service
+            android:name=".widget.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <activity android:name=".widget.ConfigActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>
-        </activity>
 
         <service
             android:name=".service.MyForegroundService"
             android:exported="true" />
 
-        <receiver android:name=".service.RebootBroadcast"
+        <receiver
+            android:name=".service.RebootBroadcast"
             android:exported="true">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.REBOOT" />
 
@@ -67,8 +71,7 @@
 
         <activity
             android:name=".service.ServiceActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
     </application>
 
